@@ -1,9 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { 
-  getFirestore, collection, onSnapshot, addDoc, deleteDoc, doc, query, where, orderBy, serverTimestamp, updateDoc 
-} 
-from 'firebase/firestore';
-
+import { getFirestore, collection, onSnapshot, addDoc, deleteDoc, doc, query, where, orderBy, serverTimestamp, updateDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAkx3cLkKcGCCUYPm-hA5tgWig_LM8TUJ4",
@@ -15,17 +11,14 @@ const firebaseConfig = {
     measurementId: "G-KT3WCLQPJ6"
   };
   
-  // Initialize DB in Application
-  initializeApp(firebaseConfig);
+// Initialize DB in Application
+initializeApp(firebaseConfig);
   
-  //constants for Firestore DB
-  const db = getFirestore();
-  const productCollections = collection(db, 'Products');
+//constants for Firestore DB
+const db = getFirestore();
+const productCollections = collection(db, 'Products');
   
-  //query to order by creation time
-  const q = query(productCollections, orderBy('createdAt'));
   
-
 //Obtain data from DB and Update data in real time
 onSnapshot(productCollections, (snapshot) => {
   let products = []
